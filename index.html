@@ -815,6 +815,47 @@ tbody tr:last-child td { border-bottom: none; }
 
 /* ===== DIVIDER ===== */
 .divider { width: 60px; height: 2px; background: linear-gradient(90deg, var(--naranja), transparent); margin: .3rem 0 1rem; }
+
+/* ===== INSTALL PWA ===== */
+.btn-install {
+  display: none;
+  width: calc(100% - 1rem);
+  margin: .4rem .5rem .5rem;
+  padding: .55rem .8rem;
+  background: rgba(232,114,12,0.1);
+  border: 1px solid rgba(232,114,12,0.3);
+  border-radius: var(--radio);
+  color: var(--naranja);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s;
+}
+.btn-install:hover { background: rgba(232,114,12,0.2); border-color: var(--naranja); }
+.btn-install.visible { display: block; }
+.btn-install-login {
+  display: none;
+  width: 100%;
+  margin-top: .8rem;
+  padding: .55rem;
+  background: transparent;
+  border: 1px solid rgba(232,114,12,0.3);
+  border-radius: var(--radio);
+  color: var(--naranja);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: .78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-install-login:hover { background: rgba(232,114,12,0.1); }
+.btn-install-login.visible { display: block; }
 </style>
 </head>
 <body>
@@ -842,6 +883,7 @@ tbody tr:last-child td { border-bottom: none; }
       <input type="password" id="login-pass" placeholder="••••••••" value="••••••••">
     </div>
     <button class="btn-login" onclick="doLogin()">Ingresar →</button>
+    <button class="btn-install-login" id="btn-install-login" onclick="instalarApp()">⬇ Instalar como App</button>
   </div>
 </div>
 
@@ -902,6 +944,7 @@ tbody tr:last-child td { border-bottom: none; }
       </div>
       <button class="btn-logout" title="Cerrar sesión" onclick="doLogout()">⇥</button>
     </div>
+    <button class="btn-install" id="btn-install-sidebar" onclick="instalarApp()">⬇ Instalar App</button>
   </nav>
 
   <!-- MAIN -->
@@ -2146,6 +2189,29 @@ function agregarUsuarioDemo() {
 
   closeModal('modal-usuario');
   showToast(`Usuario ${nombre} creado correctamente`);
+}
+
+/* ===== PWA INSTALL ===== */
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('btn-install-login').classList.add('visible');
+  document.getElementById('btn-install-sidebar').classList.add('visible');
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredPrompt = null;
+  document.getElementById('btn-install-login').classList.remove('visible');
+  document.getElementById('btn-install-sidebar').classList.remove('visible');
+  showToast('App instalada correctamente');
+});
+
+function instalarApp() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
 }
 
 /* ===== INIT ===== */
