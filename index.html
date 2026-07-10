@@ -2087,6 +2087,10 @@ function showPage(pageId, navEl) {
   const target = document.getElementById('page-' + pageId);
   if (target) target.classList.add('active');
 
+  // Reset scroll to top
+  const mc = document.querySelector('.main-content');
+  if (mc) mc.scrollTop = 0;
+
   // Nav items
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   if (navEl) navEl.classList.add('active');
