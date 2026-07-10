@@ -1,5 +1,5 @@
 // CONSTRU·INV — Service Worker
-const CACHE = 'construinv-v1';
+const CACHE = 'construinv-v2';
 const PRECACHE = [
   '/constructora-inv/',
   '/constructora-inv/index.html',
