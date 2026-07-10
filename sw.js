@@ -1,9 +1,9 @@
 // CONSTRU·INV — Service Worker
 const CACHE = 'construinv-v1';
 const PRECACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json'
+  '/constructora-inv/',
+  '/constructora-inv/index.html',
+  '/constructora-inv/manifest.json'
 ];
 
 self.addEventListener('install', e => {
