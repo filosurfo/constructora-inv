@@ -2198,25 +2198,39 @@ function agregarUsuarioDemo() {
 
 /* ===== PWA INSTALL ===== */
 let deferredPrompt = null;
+let appInstalado   = window.matchMedia('(display-mode: standalone)').matches;
+
+// Mostrar botones siempre, a menos que ya esté instalada como app
+function actualizarBotonesInstall() {
+  const show = !appInstalado;
+  ['btn-install-login','btn-install-sidebar'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('visible', show);
+  });
+}
+
+window.addEventListener('DOMContentLoaded', actualizarBotonesInstall);
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  document.getElementById('btn-install-login').classList.add('visible');
-  document.getElementById('btn-install-sidebar').classList.add('visible');
+  actualizarBotonesInstall();
 });
 
 window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
-  document.getElementById('btn-install-login').classList.remove('visible');
-  document.getElementById('btn-install-sidebar').classList.remove('visible');
+  appInstalado   = true;
+  actualizarBotonesInstall();
   showToast('App instalada correctamente');
 });
 
 function instalarApp() {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  } else {
+    showToast('Usa el ícono ⊕ en la barra del navegador para instalar');
+  }
 }
 
 /* ===== INIT ===== */
