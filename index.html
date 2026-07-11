@@ -2225,12 +2225,9 @@ window.addEventListener('appinstalled', () => {
 });
 
 function instalarApp() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
-  } else {
-    showToast('Usa el ícono ⊕ en la barra del navegador para instalar');
-  }
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
 }
 
 /* ===== INIT ===== */
