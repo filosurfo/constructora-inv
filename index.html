@@ -1605,6 +1605,99 @@ tbody tr:last-child td { border-bottom: none; }
       </div>
     </div>
 
+    <!-- ===================== USUARIOS ===================== -->
+    <div class="page" id="page-usuarios">
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="kpi-card orange"><div class="kpi-label">Total Usuarios</div><div class="kpi-value">6</div><div class="kpi-sub">Activos en el sistema</div><div class="kpi-icon">👥</div></div>
+    <div class="kpi-card blue"><div class="kpi-label">Administradores</div><div class="kpi-value">2</div><div class="kpi-sub">Acceso completo</div><div class="kpi-icon">🔑</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Almacenistas</div><div class="kpi-value">4</div><div class="kpi-sub">Acceso a inventario</div><div class="kpi-icon">📦</div></div>
+  </div>
+
+  <div class="section-card">
+    <div class="filter-row">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Buscar usuario…" oninput="filterTable('tbl-usuarios', this.value)">
+      </div>
+      <select class="filter-select">
+        <option>Todos los roles</option>
+        <option>Administrador</option>
+        <option>Almacenista</option>
+      </select>
+      <select class="filter-select">
+        <option>Todos los estados</option>
+        <option>Activo</option>
+        <option>Inactivo</option>
+      </select>
+      <button class="btn btn-primary btn-sm" onclick="openModal('modal-usuario')" style="margin-left:auto">+ Nuevo Usuario</button>
+    </div>
+
+    <div class="table-wrap">
+      <table id="tbl-usuarios">
+        <thead>
+          <tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Obra Asignada</th><th>Último acceso</th><th>Estado</th><th>Acciones</th></tr>
+        </thead>
+        <tbody id="tbody-usuarios">
+          <tr>
+            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--naranja),#c0590a);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:var(--negro);flex-shrink:0;">AD</div><span class="td-bold">Administrador</span></div></td>
+            <td>admin@constructora.com</td>
+            <td><span class="badge badge-orange">Admin</span></td>
+            <td>—</td>
+            <td>Hoy 14:32</td>
+            <td><span class="badge badge-green">Activo</span></td>
+            <td><button class="btn btn-ghost btn-sm">✏️</button></td>
+          </tr>
+          <tr>
+            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--azul),#2471a3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">RS</div><span class="td-bold">Ing. Roberto Sáenz</span></div></td>
+            <td>r.saenz@constructora.com</td>
+            <td><span class="badge badge-orange">Admin</span></td>
+            <td>—</td>
+            <td>Hoy 11:15</td>
+            <td><span class="badge badge-green">Activo</span></td>
+            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
+          </tr>
+          <tr>
+            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--verde),#27ae60);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">CM</div><span class="td-bold">Carlos Mendoza</span></div></td>
+            <td>c.mendoza@constructora.com</td>
+            <td><span class="badge badge-blue">Almacenista</span></td>
+            <td>Torre Norte</td>
+            <td>Hoy 09:48</td>
+            <td><span class="badge badge-green">Activo</span></td>
+            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
+          </tr>
+          <tr>
+            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--morado),#8e44ad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">PR</div><span class="td-bold">Pedro Ramos</span></div></td>
+            <td>p.ramos@constructora.com</td>
+            <td><span class="badge badge-blue">Almacenista</span></td>
+            <td>Residencial Sur</td>
+            <td>Ayer 16:20</td>
+            <td><span class="badge badge-green">Activo</span></td>
+            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
+          </tr>
+          <tr>
+            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#e67e22,#d35400);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">LT</div><span class="td-bold">Luis Torres</span></div></td>
+            <td>l.torres@constructora.com</td>
+            <td><span class="badge badge-blue">Almacenista</span></td>
+            <td>Bodega Industrial</td>
+            <td>Ayer 13:05</td>
+            <td><span class="badge badge-green">Activo</span></td>
+            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
+          </tr>
+          <tr>
+            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#95a5a6,#7f8c8d);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">SC</div><span class="td-bold">Sofía Cruz</span></div></td>
+            <td>s.cruz@constructora.com</td>
+            <td><span class="badge badge-blue">Almacenista</span></td>
+            <td>Edificio Centro</td>
+            <td>Hace 3 días</td>
+            <td><span class="badge badge-yellow">Inactivo</span></td>
+            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
   </div><!-- /main-content -->
 </div><!-- /app -->
 
@@ -1873,99 +1966,6 @@ tbody tr:last-child td { border-bottom: none; }
     <div class="modal-actions">
       <button class="btn btn-outline" onclick="closeModal('modal-oc')">Cancelar</button>
       <button class="btn btn-primary" onclick="closeModal('modal-oc');showToast('Orden de compra generada')">Generar OC</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===================== USUARIOS ===================== -->
-<div class="page" id="page-usuarios">
-  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">
-    <div class="kpi-card orange"><div class="kpi-label">Total Usuarios</div><div class="kpi-value">6</div><div class="kpi-sub">Activos en el sistema</div><div class="kpi-icon">👥</div></div>
-    <div class="kpi-card blue"><div class="kpi-label">Administradores</div><div class="kpi-value">2</div><div class="kpi-sub">Acceso completo</div><div class="kpi-icon">🔑</div></div>
-    <div class="kpi-card green"><div class="kpi-label">Almacenistas</div><div class="kpi-value">4</div><div class="kpi-sub">Acceso a inventario</div><div class="kpi-icon">📦</div></div>
-  </div>
-
-  <div class="section-card">
-    <div class="filter-row">
-      <div class="search-bar">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Buscar usuario…" oninput="filterTable('tbl-usuarios', this.value)">
-      </div>
-      <select class="filter-select">
-        <option>Todos los roles</option>
-        <option>Administrador</option>
-        <option>Almacenista</option>
-      </select>
-      <select class="filter-select">
-        <option>Todos los estados</option>
-        <option>Activo</option>
-        <option>Inactivo</option>
-      </select>
-      <button class="btn btn-primary btn-sm" onclick="openModal('modal-usuario')" style="margin-left:auto">+ Nuevo Usuario</button>
-    </div>
-
-    <div class="table-wrap">
-      <table id="tbl-usuarios">
-        <thead>
-          <tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Obra Asignada</th><th>Último acceso</th><th>Estado</th><th>Acciones</th></tr>
-        </thead>
-        <tbody id="tbody-usuarios">
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--naranja),#c0590a);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:var(--negro);flex-shrink:0;">AD</div><span class="td-bold">Administrador</span></div></td>
-            <td>admin@constructora.com</td>
-            <td><span class="badge badge-orange">Admin</span></td>
-            <td>—</td>
-            <td>Hoy 14:32</td>
-            <td><span class="badge badge-green">Activo</span></td>
-            <td><button class="btn btn-ghost btn-sm">✏️</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--azul),#2471a3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">RS</div><span class="td-bold">Ing. Roberto Sáenz</span></div></td>
-            <td>r.saenz@constructora.com</td>
-            <td><span class="badge badge-orange">Admin</span></td>
-            <td>—</td>
-            <td>Hoy 11:15</td>
-            <td><span class="badge badge-green">Activo</span></td>
-            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--verde),#27ae60);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">CM</div><span class="td-bold">Carlos Mendoza</span></div></td>
-            <td>c.mendoza@constructora.com</td>
-            <td><span class="badge badge-blue">Almacenista</span></td>
-            <td>Torre Norte</td>
-            <td>Hoy 09:48</td>
-            <td><span class="badge badge-green">Activo</span></td>
-            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--morado),#8e44ad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">PR</div><span class="td-bold">Pedro Ramos</span></div></td>
-            <td>p.ramos@constructora.com</td>
-            <td><span class="badge badge-blue">Almacenista</span></td>
-            <td>Residencial Sur</td>
-            <td>Ayer 16:20</td>
-            <td><span class="badge badge-green">Activo</span></td>
-            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#e67e22,#d35400);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">LT</div><span class="td-bold">Luis Torres</span></div></td>
-            <td>l.torres@constructora.com</td>
-            <td><span class="badge badge-blue">Almacenista</span></td>
-            <td>Bodega Industrial</td>
-            <td>Ayer 13:05</td>
-            <td><span class="badge badge-green">Activo</span></td>
-            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
-          </tr>
-          <tr>
-            <td><div style="display:flex;align-items:center;gap:.6rem;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#95a5a6,#7f8c8d);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff;flex-shrink:0;">SC</div><span class="td-bold">Sofía Cruz</span></div></td>
-            <td>s.cruz@constructora.com</td>
-            <td><span class="badge badge-blue">Almacenista</span></td>
-            <td>Edificio Centro</td>
-            <td>Hace 3 días</td>
-            <td><span class="badge badge-yellow">Inactivo</span></td>
-            <td><button class="btn btn-ghost btn-sm">✏️</button> <button class="btn btn-danger btn-sm">🗑️</button></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
