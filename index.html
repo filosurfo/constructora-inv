@@ -775,11 +775,40 @@ tbody tr:last-child td { border-bottom: none; }
   :root { --sidebar-w: 0px; }
   .sidebar { transform: translateX(-240px); transition: transform .25s; width: 240px; }
   .sidebar.open { transform: translateX(0); }
-  .main-content { margin-left: 0; }
+  .main-content { margin-left: 0; width: 100%; }
   .modal-grid { grid-template-columns: 1fr; }
   .oc-row, .oc-head { grid-template-columns: 70px 1fr 90px; }
   .oc-row :nth-child(4), .oc-head :nth-child(4),
   .oc-row :nth-child(5), .oc-head :nth-child(5) { display: none; }
+
+  /* KPI 2 columnas en móvil */
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+  .kpi-card { padding: .9rem .8rem; }
+  .kpi-value { font-size: 1.8rem; }
+  .kpi-icon { font-size: 1.4rem; }
+
+  /* Topbar compacto */
+  .topbar { padding: 0 .8rem; }
+  .topbar-left h2 { font-size: .8rem; letter-spacing: 2px; }
+  .topbar-left .breadcrumb { display: none; }
+  #topbar-date { display: none; }
+
+  /* Padding reducido en páginas */
+  .page { padding: .8rem; }
+
+  /* Tabla: scroll horizontal */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Dashboard: grid de 1 columna en secciones */
+  #page-dashboard > div[style*="grid-template-columns:1fr 1fr"] {
+    display: block !important;
+  }
+  #page-dashboard > div[style*="grid-template-columns:1fr 1fr"] > .section-card {
+    margin-bottom: .8rem;
+  }
+
+  /* Botón instalar en login */
+  .btn-install-login { font-size: .8rem; padding: .5rem 1rem; }
 }
 
 /* ===== EMPTY STATE ===== */
